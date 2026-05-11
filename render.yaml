@@ -1,0 +1,19 @@
+# Use this file only if the GitHub repo root IS the car-rental-web folder.
+# If your repo root is the parent folder, use ../render.yaml (repo root) instead.
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: car-rental-web
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: ALLOW_MEMORY_FALLBACK
+        value: "0"
