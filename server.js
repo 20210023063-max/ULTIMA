@@ -15,7 +15,11 @@ async function connectMongo() {
     await mongoose.disconnect().catch(() => {});
   }
 
-  const atlasOpts = { serverSelectionTimeoutMS: 25000 };
+  /** Atlas "connect" strings often omit `/car_rental`; driver default would be `test`. */
+  const atlasOpts = {
+    serverSelectionTimeoutMS: 25000,
+    dbName: process.env.MONGO_DB_NAME || "car_rental",
+  };
   const localOpts = { serverSelectionTimeoutMS: 12000 };
   const attempts = Number(process.env.MONGO_CONNECT_RETRIES || 5);
   const pauseMs = Number(process.env.MONGO_CONNECT_RETRY_MS || 4000);
@@ -38,11 +42,28 @@ async function connectMongo() {
   }
 
   if (process.env.MONGODB_URI) {
-    await connectWithRetries(
-      process.env.MONGODB_URI,
-      atlasOpts,
-      "MongoDB connected via MONGODB_URI."
-    );
+    const uri = String(process.env.MONGODB_URI).trim();
+    if (/<db_password>|<password>/i.test(uri)) {
+      throw new Error(
+        "[car-rental-web] MONGODB_URI still contains an Atlas placeholder (e.g. <db_password>). " +
+          "On Render → Environment, replace that text with the real database user password. " +
+          "Special characters in the password must be percent-encoded in the URI."
+      );
+    }
+    const withoutScheme = uri.replace(/^mongodb(\+srv)?:\/\//i, "");
+    const at = withoutScheme.indexOf("@");
+    if (at !== -1) {
+      const userPass = withoutScheme.slice(0, at);
+      const colon = userPass.indexOf(":");
+      const pass = colon >= 0 ? userPass.slice(colon + 1) : "";
+      if (!pass) {
+        throw new Error(
+          "[car-rental-web] MONGODB_URI has no password after the colon (user:@host). " +
+            "Paste the password for that Atlas database user between : and @."
+        );
+      }
+    }
+    await connectWithRetries(uri, atlasOpts, "MongoDB connected via MONGODB_URI.");
     return {};
   }
 
@@ -94,7 +115,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-/** Always available — helps Render/process managers see the server is up while Mongo connects. */
+/**
+ * Liveness only — always 200 after the process has started.
+ * Use this as Render "Health Check Path" so the instance is not marked down
+ * while MongoDB is still connecting (/api/health returns 503 until then).
+ */
+app.get("/health", (_req, res) => {
+  res.status(200).json({ ok: true });
+});
+
+/** Readiness — 200 when DB is connected, 503 otherwise (for monitoring). */
 app.get("/api/health", (_req, res) => {
   const ready = mongoose.connection.readyState === 1;
   res.status(ready ? 200 : 503).json({
