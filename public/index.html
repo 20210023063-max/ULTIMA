@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ULTIMA CARS — Premium rental</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="marketing-wrap no-print" id="marketingWrap" aria-hidden="false">
+      <!-- Public customer site -->
+      <header class="site-header no-print" id="top">
+        <div class="site-header__inner">
+          <a href="#top" class="logo">ULTIMA <span>CARS</span></a>
+          <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+          <nav class="site-nav" id="siteNav">
+            <a href="#categories">Cars</a>
+            <a href="#about">About us</a>
+            <a href="#services">Services</a>
+            <a href="#trend">Fleet</a>
+            <a href="#contacts">Contacts</a>
+            <button type="button" id="navBranchOpsBtn" class="link-btn" hidden>
+              Branch operations
+            </button>
+            <button type="button" id="backToDashboardBtn" class="link-btn" hidden>Branch dashboard</button>
+            <button type="button" class="link-btn js-open-login">Staff login</button>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+      <section class="hero" id="hero">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="hero__eyebrow">Premium mobility across Mindanao</p>
+            <h1 class="hero__title">Where style meets the road</h1>
+            <p class="hero__lead">
+              Discover a curated fleet with concierge-level service. Pick your store, explore live
+              availability, and let our team handle the rest.
+            </p>
+          </div>
+          <aside class="hero-card glass">
+            <div class="hero-card__row">
+              <span class="hero-card__label">Pickup branch</span>
+              <select id="inquiryBranch" class="hero-branch-select" aria-label="Branch for availability"></select>
+            </div>
+            <p class="hero-card__muted" id="heroAvailability">—</p>
+            <hr class="hero-divider" />
+            <h3 class="hero-card__model" id="heroSpotModel">Featured model</h3>
+            <p class="hero-card__trim" id="heroSpotTrim">Premium fleet</p>
+            <div class="hero-card__price-row">
+              <span class="hero-card__price" id="heroSpotPrice">₱0</span>
+              <span class="hero-card__per">/ day</span>
+            </div>
+            <a href="#book" class="btn btn-light btn-block">Book now</a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section section--light" id="categories">
+        <div class="container">
+          <h2 class="section-title">Car category</h2>
+          <div class="cat-grid">
+            <article class="cat-card">
+              <div class="cat-card__top"><span>Sedans</span><span class="cat-arrow">↗</span></div>
+              <div class="cat-card__img cat-card__img--1"></div>
+              <p class="cat-card__models">BMW 5 Series · Lexus ES · Camry</p>
+            </article>
+            <article class="cat-card cat-card--featured">
+              <div class="cat-card__top"><span>SUVs</span><span class="cat-arrow">↗</span></div>
+              <div class="cat-card__img cat-card__img--2"></div>
+              <p class="cat-card__models">RAV4 · CR-V · Tiguan</p>
+            </article>
+            <article class="cat-card">
+              <div class="cat-card__top"><span>Sportscars</span><span class="cat-arrow">↗</span></div>
+              <div class="cat-card__img cat-card__img--3"></div>
+              <p class="cat-card__models">Mustang · 86 · Z4</p>
+            </article>
+            <article class="cat-card">
+              <div class="cat-card__top"><span>Convertibles</span><span class="cat-arrow">↗</span></div>
+              <div class="cat-card__img cat-card__img--4"></div>
+              <p class="cat-card__models">Miata · 4-Series · Boxster</p>
+            </article>
+            <article class="cat-card">
+              <div class="cat-card__top"><span>Executive</span><span class="cat-arrow">↗</span></div>
+              <div class="cat-card__img cat-card__img--5"></div>
+              <p class="cat-card__models">S-Class · A8 · LS</p>
+            </article>
+            <article class="cat-card">
+              <div class="cat-card__top"><span>Electric</span><span class="cat-arrow">↗</span></div>
+              <div class="cat-card__img cat-card__img--6"></div>
+              <p class="cat-card__models">Ioniq 5 · Model 3 · Leaf</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--about" id="about">
+        <div class="container narrow">
+          <h2 class="section-title section-title--dark">About us</h2>
+          <p class="lead">
+            ULTIMA CARS pairs meticulous vehicle care with transparent pricing. Four in-store
+            locations—<strong>Carmen</strong>, <strong>Gusa</strong>, <strong>Iponan</strong>, and
+            <strong>Bugo</strong>—keep the fleet close to you.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section--services" id="services">
+        <div class="container narrow">
+          <h2 class="section-title">Services</h2>
+          <ul class="service-list">
+            <li>Daily &amp; weekly leases with OR-ready receipts</li>
+            <li>Branch-level inventory and staffed handover</li>
+            <li>Fleet maintenance and valet prep between trips</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--trend" id="trend">
+        <div class="container">
+          <div class="trend-head">
+            <h2 class="section-title">Trend vehicles</h2>
+            <p class="hint" id="trendHint">Prices reflect the branch selected in the hero card.</p>
+          </div>
+          <div class="trend-strip" id="trendTrack" aria-label="Featured vehicles"></div>
+        </div>
+      </section>
+
+      <section class="section section--testimonials" id="testimonials">
+        <div class="container">
+          <h2 class="section-title">Trusted by drivers</h2>
+          <div class="testimonial" id="testimonial">
+            <div class="testimonial__visual">
+              <span class="avatar" id="tAvatar"></span>
+              <span class="avatar avatar--car" id="tCar"></span>
+            </div>
+            <div class="testimonial__body">
+              <p class="stars" aria-hidden="true">★★★★★</p>
+              <blockquote id="tQuote">Loading…</blockquote>
+              <footer><strong id="tName">—</strong> · <span id="tMeta">—</span></footer>
+            </div>
+          </div>
+          <div class="dots" id="tDots" role="tablist" aria-label="Testimonials"></div>
+        </div>
+      </section>
+
+      <section class="section section--book" id="book">
+        <div class="container book-grid">
+          <div>
+            <h2 class="section-title">Need a car? Let us help</h2>
+            <p class="lead">
+              Tell us your preferred model and dates. We route your request to the branch you select.
+            </p>
+          </div>
+          <form class="inquiry-form" id="inquiryForm" novalidate>
+            <label class="field">
+              <span class="field-icon" aria-hidden="true">👤</span>
+              <input name="name" type="text" placeholder="Your name" required />
+            </label>
+            <label class="field">
+              <span class="field-icon" aria-hidden="true">📞</span>
+              <input name="phone" type="tel" placeholder="Phone number" required />
+            </label>
+            <label class="field">
+              <span class="field-icon" aria-hidden="true">🚗</span>
+              <input name="carModel" type="text" placeholder="Car model (optional)" />
+            </label>
+            <label class="field field--half">
+              <span class="field-icon" aria-hidden="true">📅</span>
+              <input name="startDate" type="date" aria-label="Start date" />
+            </label>
+            <label class="field field--half">
+              <span class="field-icon" aria-hidden="true">📅</span>
+              <input name="endDate" type="date" aria-label="End date" />
+            </label>
+            <label class="field">
+              <span class="field-icon" aria-hidden="true">📍</span>
+              <select name="branch" id="formBranch" required></select>
+            </label>
+            <button type="submit" class="btn btn-dark btn-full">Send request</button>
+            <p class="form-status" id="inquiryStatus" role="status"></p>
+          </form>
+        </div>
+      </section>
+      </main>
+
+      <footer class="site-footer no-print" id="contacts">
+      <div class="container footer-grid">
+        <div>
+          <div class="logo logo--footer">ULTIMA <span>CARS</span></div>
+          <p class="footer-tag">Drive premium. Stay effortless.</p>
+          <p class="footer-contact">hello@ultimacars.example<br />+63 900 000 0000<br />Cagayan de Oro, Philippines</p>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Explore</h3>
+          <a href="#categories">Cars</a>
+          <a href="#about">About us</a>
+          <a href="#services">Services</a>
+          <a href="#trend">Fleet</a>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Support</h3>
+          <a href="#book">Book</a>
+          <a href="#">FAQ</a>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <button type="button" class="footer-admin js-open-login">Admin / Staff login</button>
+        </div>
+        <div class="socials">
+          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+        </div>
+      </div>
+      </footer>
+    </div>
+
+    <!-- Branch operations: hidden until a branch_staff or branch_admin session (see app.js) -->
+    <section class="staff-portal no-print" id="staff-portal" aria-labelledby="staffPortalHeading" hidden>
+      <div class="dashboard-shell">
+        <p class="dashboard-bar" id="dashboardBar" hidden>
+          <strong id="dashRoleBadge">Portal</strong>
+          <span class="dash-sep" aria-hidden="true">·</span>
+          <span id="dashNavHint">Fleet &amp; rentals</span>
+        </p>
+
+        <div class="staff-portal__head">
+          <h2 class="staff-portal__title" id="staffPortalHeading">Branch operations</h2>
+          <p class="staff-portal__sub" id="staffPortalGuestHelp">
+            <strong>Administrators</strong> manage customers, rentals, receipts, payments, and data entry.
+            <strong>Staff viewers</strong> can only browse overview, fleet, and rental history for their branch.
+            Demo logins · password <code>branch123</code>: admins
+            <code>admin_carmen</code> … <code>admin_bugo</code> · viewers
+            <code>staff_carmen</code> … <code>staff_bugo</code>.
+          </p>
+
+          <div class="staff-toolbar">
+            <label class="hint" for="branch">Portal branch</label>
+            <select id="branch" aria-label="Your assigned branch"></select>
+            <span id="userLabel" class="hint"></span>
+            <button type="button" id="browsePublicBtn" class="btn btn-ghost btn-sm" hidden>
+              Browse customer site
+            </button>
+            <button type="button" id="loginBtn" class="btn btn-light btn-sm">Staff login</button>
+            <button type="button" id="logoutBtn" class="btn btn-ghost btn-sm" hidden>Logout</button>
+          </div>
+        </div>
+
+      <div class="panel" id="statsPanel">
+        <div class="section-title">Overview for selected branch</div>
+        <div class="stats" id="stats"></div>
+        <p class="hint" id="portalAccessNote" hidden style="margin: 0.75rem 0 0"></p>
+        <p class="hint" id="statsHint" style="margin: 0.35rem 0 0">
+          Counts refresh when you change the branch (while not logged in, as a coordinator). Sign in below to
+          see rental history — viewer vs admin permissions apply after login.
+        </p>
+      </div>
+
+      <nav class="tabs tabs--portal" id="portalTabs" aria-label="Branch operations navigation">
+        <button type="button" class="tab active" data-tab="vehicles" data-nav-group="fleet">Fleet</button>
+        <button type="button" class="tab" data-require-admin="1" data-tab="customers" data-nav-group="desk">
+          Customers
+        </button>
+        <button type="button" class="tab" data-require-admin="1" data-tab="rent" data-nav-group="desk">
+          Rent
+        </button>
+        <button type="button" class="tab" data-tab="rentals" data-nav-group="fleet">Rentals</button>
+        <button type="button" class="tab" data-require-admin="1" data-tab="add" data-nav-group="desk">
+          Add data
+        </button>
+        <button type="button" class="tab" data-require-admin="1" data-tab="invoice" data-nav-group="desk">
+          Receipt
+        </button>
+      </nav>
+
+      <section class="panel tab-panel" id="tab-vehicles">
+        <div class="section-title">Fleet — <span id="fleetBranchLabel"></span></div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Vehicle ID</th>
+                <th>Model</th>
+                <th class="num">Rate (₱)</th>
+                <th>Status</th>
+                <th>Rate update</th>
+              </tr>
+            </thead>
+            <tbody id="vehicleBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel tab-panel" id="tab-customers" hidden>
+        <div class="section-title">Registered customers — administrators only</div>
+        <p class="hint" id="customersLocked">Sign in as branch staff to view and manage customers.</p>
+        <div class="table-scroll">
+          <table id="customersTable" hidden>
+            <thead>
+              <tr>
+                <th>Customer ID</th>
+                <th>Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody id="customerBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel tab-panel" id="tab-rent" hidden>
+        <div class="section-title">Rent a vehicle — administrators only</div>
+        <p class="hint" id="rentLocked">Staff login required.</p>
+        <form id="rentForm" class="grid-2" hidden>
+          <div>
+            <label>Customer ID</label>
+            <input name="customerId" autocomplete="off" />
+          </div>
+          <div>
+            <label>Vehicle ID</label>
+            <input name="vehicleId" autocomplete="off" />
+          </div>
+          <div>
+            <label>Rental date</label>
+            <input type="date" name="rentalDate" />
+          </div>
+          <div>
+            <label>Return date</label>
+            <input type="date" name="returnDate" />
+          </div>
+        </form>
+        <div class="form-actions" id="rentActions" hidden>
+          <button type="button" id="submitRent" class="btn btn-light">Submit rental</button>
+          <button type="button" id="clearRent" class="btn btn-ghost">Clear</button>
+        </div>
+        <div class="message" id="rentMessage" hidden></div>
+      </section>
+
+      <section class="panel tab-panel" id="tab-rentals" hidden>
+        <div class="section-title">Rental records</div>
+        <p class="hint" id="rentalsLocked">Sign in to see rental history for this branch.</p>
+        <p class="hint" id="rentalsViewerHint" hidden>
+          You are signed in as a <strong>viewer</strong>. Admins manage returns, payment status, and official
+          receipts.
+        </p>
+        <div class="form-actions rental-toolbar">
+          <button type="button" id="refreshRentals" class="btn btn-ghost" hidden>Refresh</button>
+          <div class="rental-admin-actions" id="rentalAdminActions" hidden>
+            <button type="button" id="returnVehicle" class="btn btn-ghost">Mark returned</button>
+            <button type="button" id="markPaid" class="btn btn-ghost">Mark paid</button>
+            <button type="button" id="loadInvoice" class="btn btn-light">Receipt</button>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table id="rentalsTable" hidden>
+            <thead>
+              <tr>
+                <th>Rental ID</th>
+                <th>Customer</th>
+                <th>Vehicle</th>
+                <th>Dates</th>
+                <th class="num">Total (₱)</th>
+                <th>Payment</th>
+              </tr>
+            </thead>
+            <tbody id="rentalBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel tab-panel" id="tab-add" hidden>
+        <div class="section-title">Add vehicle / customer — administrators only</div>
+        <p class="hint" id="addLocked">Staff login required.</p>
+        <div id="addForms" hidden>
+          <div class="grid-2">
+            <div>
+              <h3 class="section-title">New customer</h3>
+              <label>Customer ID</label>
+              <input id="newCustId" />
+              <label>Name</label>
+              <input id="newCustName" />
+              <label>Email</label>
+              <input id="newCustEmail" />
+              <div class="form-actions">
+                <button type="button" id="addCustomerBtn" class="btn btn-light">Add customer</button>
+              </div>
+            </div>
+            <div>
+              <h3 class="section-title">New vehicle</h3>
+              <label>Vehicle ID</label>
+              <input id="newVehId" />
+              <label>Model</label>
+              <input id="newVehModel" />
+              <label>Rental rate (₱)</label>
+              <input id="newVehRate" type="number" min="1" step="0.01" />
+              <div class="form-actions">
+                <button type="button" id="addVehicleBtn" class="btn btn-light">Add vehicle</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel tab-panel" id="tab-invoice" hidden>
+        <div class="section-title">Official receipt — administrators only</div>
+        <p class="hint" id="invoiceLocked">Pick a rental in the Rentals tab, then Generate receipt.</p>
+        <div class="invoice-preview" id="invoiceArea" hidden></div>
+        <div class="form-actions">
+          <button type="button" id="printReceipt" class="btn btn-ghost" hidden>Print</button>
+        </div>
+      </section>
+      </div>
+    </section>
+
+    <div class="modal-overlay no-print" id="loginModal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-labelledby="loginTitle">
+        <h2 id="loginTitle">Staff login</h2>
+        <p class="staff-note">
+          Each branch has its own login. Administrators can process rentals and receipts; viewers see fleet
+          and rental history only. After sign-in you stay on Branch operations unless you choose “Browse
+          customer site”.
+        </p>
+        <form id="loginForm">
+          <label>Username</label>
+          <input name="username" autocomplete="username" required />
+          <label>Password</label>
+          <input name="password" type="password" autocomplete="current-password" required />
+          <div class="form-actions">
+            <button type="submit" class="btn btn-light">Sign in</button>
+            <button type="button" class="btn btn-ghost" id="closeLogin">Cancel</button>
+          </div>
+        </form>
+        <p class="staff-note" id="loginError"></p>
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
